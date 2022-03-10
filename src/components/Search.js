@@ -26,34 +26,38 @@ class Search extends Component {
   render() {
     const { search, products } = this.state;
     return (
-      <div>
+      <div
+        className="home"
+      >
         <CategoryList />
         <div>
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-          <label htmlFor="search-input">
-            <input
-              data-testid="query-input"
-              id="search-input"
-              name="search"
-              value={ search }
-              onChange={ this.handleInputChange }
-            />
-          </label>
+          <div>
+            <p data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+            <label htmlFor="search-input">
+              <input
+                data-testid="query-input"
+                id="search-input"
+                name="search"
+                value={ search }
+                onChange={ this.handleInputChange }
+              />
+            </label>
 
-          <button
-            data-testid="query-button"
-            type="button"
-            onClick={ this.handlesearchButtonClick }
-          >
-            enviar
-          </button>
-        </div>
-        <div>
-          { products.map((product) => (
-            <CardProducts key={ product.id } dataProduct={ product } />
-          )) }
+            <button
+              data-testid="query-button"
+              type="button"
+              onClick={ this.handlesearchButtonClick }
+            >
+              enviar
+            </button>
+          </div>
+          <div className="product-container">
+            { products.map((product) => (
+              <CardProducts key={ product.id } dataProduct={ product } />
+            )) }
+          </div>
         </div>
       </div>
     );

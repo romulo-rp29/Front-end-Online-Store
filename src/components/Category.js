@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class Category extends Component {
   render() {
-    const { name } = this.props;
+    const { name, id } = this.props;
     return (
-      <>
-        <label htmlFor="category" data-testid>
-          <input type="radio" name="category" id="category" data-testid="category" />
+      <div>
+        <label htmlFor={ id } data-testid>
+          <input type="radio" name="category" id={ id } data-testid="category" />
+          <span>{name}</span>
         </label>
-        <p>{name}</p>
-      </>
+      </div>
     );
   }
 }
 Category.propTypes = {
   name: PropTypes.string.isRequired,
+};
+
+Category.propTypes = {
+  id: PropTypes.string.isRequired,
 };
 
 export default Category;

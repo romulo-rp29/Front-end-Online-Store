@@ -22,12 +22,11 @@ class CategoryList extends Component {
   render() {
     const { categories } = this.state;
     return (
-      <>
-        <p>Categorias</p>
+      <aside>
         {categories.map((category) => (
-          <Category key={ category.id } name={ category.name } />
+          <Category key={ category.id } name={ category.name } id={ category.id } />
         ))}
-      </>
+      </aside>
     );
   }
 }

@@ -1,13 +1,16 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class CardProducts extends Component {
   render() {
     const { dataProduct: { title, thumbnail, price } } = this.props;
     return (
-      <div data-testid="product">
+      <div
+        data-testid="product"
+        className="card-products"
+      >
         <p>{ title }</p>
-        <img src={ thumbnail } alt={ title } />
+        <img src={ thumbnail } alt={ title } className="card-products__image" />
         <span>{ `R$${price}` }</span>
       </div>);
   }
