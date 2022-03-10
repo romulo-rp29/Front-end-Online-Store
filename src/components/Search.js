@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import CardProducts from './CardProducts';
 
 class Search extends Component {
   constructor() {
@@ -22,30 +23,36 @@ class Search extends Component {
   }
 
   render() {
-    const { search } = this.state;
+    const { search, products } = this.state;
     return (
       <div>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
+        <div>
+          <p data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </p>
+          <label htmlFor="search-input">
+            <input
+              data-testid="query-input"
+              id="search-input"
+              name="search"
+              value={ search }
+              onChange={ this.handleInputChange }
+            />
+          </label>
 
-        </p>
-        <label htmlFor="search-input">
-          <input
-            data-testid="query-input"
-            id="search-input"
-            name="search"
-            value={ search }
-            onChange={ this.handleInputChange }
-          />
-        </label>
-
-        <button
-          data-testid="query-button"
-          type="button"
-          onClick={ this.handlesearchButtonClick }
-        >
-          enviar
-        </button>
+          <button
+            data-testid="query-button"
+            type="button"
+            onClick={ this.handlesearchButtonClick }
+          >
+            enviar
+          </button>
+        </div>
+        <div>
+          { products.map((product) => (
+            <CardProducts key={ product.id } dataProduct={ product } />
+          )) }
+        </div>
       </div>
     );
   }
