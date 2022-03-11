@@ -1,34 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { getProductsFromCategoryAndQuery } from '../services/api';
 import CardProducts from './CardProducts';
 
 class Search extends Component {
-  constructor() {
-    super();
-    this.state = {
-      search: '',
-      products: [],
-    };
-  }
-
-  async componentDidMount() {
-    this.handleSearchButtonClick();
-  }
-
-  handleInputChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  }
-
-  handleSearchButtonClick = async () => {
-    const { search } = this.state;
-    const { category } = this.props;
-    const response = await getProductsFromCategoryAndQuery(category, search);
-    this.setState({ products: response.results });
-  }
-
   render() {
-    const { search, products } = this.state;
+    const { search, products, handleSearchChange, searchItemCards } = this.props;
     return (
       <div>
         <div>
@@ -42,14 +18,14 @@ class Search extends Component {
                 id="search-input"
                 name="search"
                 value={ search }
-                onChange={ this.handleInputChange }
+                onChange={ handleSearchChange }
               />
             </label>
 
             <button
               data-testid="query-button"
               type="button"
-              onClick={ this.handleSearchButtonClick }
+              onClick={ searchItemCards }
             >
               enviar
             </button>
@@ -66,7 +42,10 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-  category: PropTypes.string.isRequired,
+  search: PropTypes.string.isRequired,
+  products: PropTypes.arrayOf(PropTypes.any).isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
+  searchItemCards: PropTypes.func.isRequired,
 };
 
 export default Search;
