@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 class ProductAttributes extends Component {
@@ -11,5 +12,10 @@ class ProductAttributes extends Component {
     );
   }
 }
+
+ProductAttributes.propTypes = {
+  name: PropTypes.string.isRequired,
+  valueName: PropTypes.string.isRequired,
+};
 
 export default ProductAttributes;

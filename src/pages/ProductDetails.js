@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { getProductDetails } from '../services/api';
 import ProductAttributes from '../components/ProductAttributes';
@@ -45,5 +46,9 @@ class ProductDetails extends Component {
     );
   }
 }
+
+ProductDetails.propTypes = {
+  match: PropTypes.shape.isRequired,
+};
 
 export default ProductDetails;
