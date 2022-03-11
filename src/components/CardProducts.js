@@ -7,7 +7,7 @@ class CardProducts extends Component {
     const { dataProduct: { title, thumbnail, price, id } } = this.props;
     return (
       <div
-        data-testid="product "
+        data-testid="product"
         className="card-products"
       >
         <p>{ title }</p>
