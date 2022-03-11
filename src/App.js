@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Routes from './components/Routes';
-import Cart from './components/CartButton';
+import CartButton from './components/CartButton';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <Cart />
+          <CartButton />
           <Routes />
         </div>
       </BrowserRouter>
