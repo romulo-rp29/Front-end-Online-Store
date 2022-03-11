@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import CardProducts from './CardProducts';
@@ -7,17 +8,21 @@ class Search extends Component {
     super();
     this.state = {
       search: '',
-      category: '',
       products: [],
     };
+  }
+
+  async componentDidMount() {
+    this.handleSearchButtonClick();
   }
 
   handleInputChange = ({ target }) => {
     this.setState({ [target.name]: target.value });
   }
 
-  handlesearchButtonClick = async () => {
-    const { search, category } = this.state;
+  handleSearchButtonClick = async () => {
+    const { search } = this.state;
+    const { category } = this.props;
     const response = await getProductsFromCategoryAndQuery(category, search);
     this.setState({ products: response.results });
   }
@@ -59,5 +64,9 @@ class Search extends Component {
     );
   }
 }
+
+Search.propTypes = {
+  category: PropTypes.string.isRequired,
+};
 
 export default Search;

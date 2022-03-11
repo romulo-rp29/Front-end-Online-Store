@@ -4,13 +4,25 @@ import Search from '../components/Search';
 import ShoppingCart from '../components/ShoppingCart';
 
 class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      category: '',
+    };
+  }
+
+  setCateogry = (category) => {
+    this.setState({ category });
+  }
+
   render() {
+    const { category } = this.state;
     return (
       <div
         className="home"
       >
-        <CategoryList />
-        <Search />
+        <CategoryList setCateogry={ this.setCateogry } />
+        <Search category={ category } />
         <ShoppingCart />
       </div>
     );
