@@ -49,7 +49,7 @@ class Search extends Component {
             <button
               data-testid="query-button"
               type="button"
-              onClick={ this.handlesearchButtonClick }
+              onClick={ this.handleSearchButtonClick }
             >
               enviar
             </button>
