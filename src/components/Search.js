@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 import CardProducts from './CardProducts';
-import CategoryList from './CategoryList';
 
 class Search extends Component {
   constructor() {
@@ -26,10 +25,7 @@ class Search extends Component {
   render() {
     const { search, products } = this.state;
     return (
-      <div
-        className="home"
-      >
-        <CategoryList />
+      <div>
         <div>
           <div>
             <p data-testid="home-initial-message">
