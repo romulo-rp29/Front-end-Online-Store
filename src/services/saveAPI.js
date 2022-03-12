@@ -29,7 +29,7 @@ export function saveReview(productId, review) {
 export function loadReview(productId) {
   if (localStorage.reviews) {
     const reviews = JSON.parse(localStorage.reviews);
-    return reviews[productId];
+    if (reviews[productId]) return reviews[productId];
   }
   localStorage.reviews = JSON.stringify({});
   return [];
