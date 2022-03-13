@@ -4,7 +4,7 @@ class CartButton extends Component {
   render() {
     return (
       <div>
-        <button data-testid="shopping-cart-button" type="button">CartButton</button>
+        <button data-testid="shopping-cart-button" type="button">Carrinho</button>
         <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>
       </div>
     );
