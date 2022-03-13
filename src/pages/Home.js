@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import CategoryList from '../components/CategoryList';
 import Search from '../components/Search';
-import ShoppingCart from '../components/ShoppingCart';
+import CartButton from '../components/CartButton';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends Component {
@@ -24,7 +25,7 @@ class Home extends Component {
     this.setState({ products: response.results });
   }
 
-  setCateogry = async (category) => {
+  setCategory = async (category) => {
     this.setState({ category }, this.searchItemCards);
   }
 
@@ -35,7 +36,7 @@ class Home extends Component {
       <div
         className="home"
       >
-        <CategoryList setCateogry={ this.setCateogry } />
+        <CategoryList setCategory={ this.setCategory } />
         <Search
           category={ category }
           products={ products }
@@ -44,10 +45,13 @@ class Home extends Component {
           searchItemCards={ this.searchItemCards }
           addCart={ addCart }
         />
-        <ShoppingCart />
+        <CartButton />
       </div>
     );
   }
 }
+Home.propTypes = {
+  addCart: PropTypes.func.isRequired,
+};
 
 export default Home;

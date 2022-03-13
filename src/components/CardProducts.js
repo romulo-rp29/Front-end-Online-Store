@@ -17,7 +17,11 @@ class CardProducts extends Component {
         <Link to={ `/productdetails/${id}` } data-testid="product-detail-link">
           Mais Detalhes
         </Link>
-        <button type="button" data-testid="product-add-to-cart" onClick={ () => addCart(title) }>
+        <button
+          type="button"
+          data-testid="product-add-to-cart"
+          onClick={ () => addCart(title) }
+        >
           Adicionar ao carrrinho
         </button>
       </div>
@@ -31,6 +35,7 @@ CardProducts.propTypes = {
     price: PropTypes.number,
     id: PropTypes.string,
   }).isRequired,
+  addCart: PropTypes.func.isRequired,
 };
 
 export default CardProducts;

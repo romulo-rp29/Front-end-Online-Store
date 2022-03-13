@@ -32,7 +32,11 @@ class Search extends Component {
           </div>
           <div className="product-container">
             { products.map((product) => (
-              <CardProducts key={ product.id } dataProduct={ product } addCart={ addCart } />
+              <CardProducts
+                key={ product.id }
+                dataProduct={ product }
+                addCart={ addCart }
+              />
             )) }
           </div>
         </div>
@@ -46,6 +50,7 @@ Search.propTypes = {
   products: PropTypes.arrayOf(PropTypes.any).isRequired,
   handleSearchChange: PropTypes.func.isRequired,
   searchItemCards: PropTypes.func.isRequired,
+  addCart: PropTypes.func.isRequired,
 };
 
 export default Search;
