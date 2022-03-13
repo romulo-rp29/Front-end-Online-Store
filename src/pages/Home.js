@@ -30,6 +30,7 @@ class Home extends Component {
 
   render() {
     const { category, products, search } = this.state;
+    const { addCart } = this.props;
     return (
       <div
         className="home"
@@ -41,6 +42,7 @@ class Home extends Component {
           search={ search }
           handleSearchChange={ this.handleSearchChange }
           searchItemCards={ this.searchItemCards }
+          addCart={ addCart }
         />
         <ShoppingCart />
       </div>

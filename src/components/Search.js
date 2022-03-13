@@ -4,7 +4,7 @@ import CardProducts from './CardProducts';
 
 class Search extends Component {
   render() {
-    const { search, products, handleSearchChange, searchItemCards } = this.props;
+    const { search, products, handleSearchChange, searchItemCards, addCart } = this.props;
     return (
       <div>
         <div>
@@ -32,7 +32,7 @@ class Search extends Component {
           </div>
           <div className="product-container">
             { products.map((product) => (
-              <CardProducts key={ product.id } dataProduct={ product } />
+              <CardProducts key={ product.id } dataProduct={ product } addCart={ addCart } />
             )) }
           </div>
         </div>

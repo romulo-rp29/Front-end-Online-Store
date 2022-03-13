@@ -6,18 +6,17 @@ import Cart from '../pages/Cart';
 
 class Routes extends Component {
   render() {
+    const { addCart, cartItems } = this.props;
     return (
-      <div>
-        <Switch>
-          <Route exact path="/" component={ Home } />
-          <Route exact path="/cart" component={ Cart } />
-          <Route
-            exact
-            path="/productdetails/:id"
-            render={ (props) => <ProductDetails { ...props } /> }
-          />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" render={ () => <Home addCart={ addCart } /> } />
+        <Route exact path="/cart" render={ () => <Cart cartItems={ cartItems } /> } />
+        <Route
+          exact
+          path="/productdetails/:id"
+          render={ (props) => <ProductDetails { ...props } /> }
+        />
+      </Switch>
     );
   }
 }

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class CartButton extends Component {
   render() {
     return (
       <div>
-        <button data-testid="shopping-cart-button" type="button">Carrinho</button>
-        <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>
+        <Link to="/cart" data-testid="shopping-cart-button">
+          <button type="button">Carrinho</button>
+        </Link>
       </div>
     );
   }
