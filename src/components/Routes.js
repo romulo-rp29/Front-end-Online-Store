@@ -15,7 +15,7 @@ class Routes extends Component {
         <Route
           exact
           path="/productdetails/:id"
-          render={ (props) => <ProductDetails { ...props } /> }
+          render={ (props) => <ProductDetails { ...props } addCart={ addCart } /> }
         />
       </Switch>
     );

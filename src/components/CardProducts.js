@@ -14,9 +14,14 @@ class CardProducts extends Component {
         <p>{ title }</p>
         <img src={ thumbnail } alt={ title } className="card-products__image" />
         <span>{ `R$${price}` }</span>
-        <Link to={ `/productdetails/${id}` } data-testid="product-detail-link">
+        <Link
+          addCart={ addCart }
+          to={ `/productdetails/${id}` }
+          data-testid="product-detail-link"
+        >
           Mais Detalhes
         </Link>
+
         <button
           type="button"
           data-testid="product-add-to-cart"
