@@ -5,14 +5,17 @@ import ItemCart from '../components/ItemCart';
 class Cart extends Component {
   render() {
     const { cartItems } = this.props;
-    return (
+    return !cartItems.length ? (
+      <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>
+    ) : (
       <div>
-        <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>
-        {cartItems.map((item, index) => (<ItemCart
-          key={ index }
-          productName={ item.title }
-          productQuantity={ item.qtd }
-        />))}
+        {cartItems.map((item, index) => (
+          <ItemCart
+            key={ index }
+            productName={ item.title }
+            productQuantity={ item.qtd }
+          />
+        ))}
       </div>
     );
   }
