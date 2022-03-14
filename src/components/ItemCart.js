@@ -45,9 +45,9 @@ class ItemCart extends Component {
       this.setState((prevState) => ({
         productQuantity: prevState.productQuantity - 1,
       }));
-      this.setState({
-        productTotalPrice: productPrice * productQuantity,
-      });
+      this.setState((prevState) => ({
+        productTotalPrice: prevState.productPrice * prevState.productQuantity,
+      }));
       handleTotalPrice(-productPrice);
     }
   }
