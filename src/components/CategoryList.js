@@ -21,7 +21,7 @@ class CategoryList extends Component {
   };
 
   render() {
-    const { setCateogry } = this.props;
+    const { setCategory } = this.props;
     const { categories } = this.state;
     return (
       <aside>
@@ -30,7 +30,7 @@ class CategoryList extends Component {
             key={ category.id }
             name={ category.name }
             id={ category.id }
-            setCateogry={ setCateogry }
+            setCategory={ setCategory }
           />
         ))}
       </aside>
@@ -39,7 +39,7 @@ class CategoryList extends Component {
 }
 
 CategoryList.propTypes = {
-  setCateogry: PropTypes.func.isRequired,
+  setCategory: PropTypes.func.isRequired,
 };
 
 export default CategoryList;
