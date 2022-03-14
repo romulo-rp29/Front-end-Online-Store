@@ -33,7 +33,7 @@ class Cart extends Component {
             handleTotalPrice={ this.handleTotalPrice }
           />
         ))}
-        <span>{ `Total: R$${totalPrice}` }</span>
+        <span>{ `Total: R$${(totalPrice.toFixed(2))}` }</span>
       </div>
     );
   }

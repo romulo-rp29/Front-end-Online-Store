@@ -26,15 +26,15 @@ class ItemCart extends Component {
     });
   }
 
-  increaseQuantity = () => {
-    const { productPrice, productQuantity } = this.state;
+  increaseQuantity = async () => {
+    const { productPrice } = this.state;
     const { handleTotalPrice } = this.props;
     this.setState((prevState) => ({
       productQuantity: prevState.productQuantity + 1,
     }));
-    this.setState({
-      productTotalPrice: productPrice * productQuantity,
-    });
+    this.setState((prevState) => ({
+      productTotalPrice: prevState.productPrice * prevState.productQuantity,
+    }));
     handleTotalPrice(productPrice);
   }
 
@@ -71,7 +71,7 @@ class ItemCart extends Component {
           🗑️
         </button>
         <p data-testid="shopping-cart-product-name">{productName}</p>
-        <span>{ `R$${productTotalPrice}` }</span>
+        <span>{ `R$${(productTotalPrice.toFixed(2))}` }</span>
         <button
           type="button"
           data-testid="product-decrease-quantity"
