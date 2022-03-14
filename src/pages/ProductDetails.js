@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import AddToCartButton from '../components/AddToCartButton';
 import ProductAttributes from '../components/ProductAttributes';
 import ProductDetailsForm from '../components/ProductDetailsForm';
 import ProductReview from '../components/ProductReview';
 import { getProductDetails } from '../services/api';
 import { loadReview } from '../services/saveAPI';
+import CartButton from '../components/CartButton';
 
 class ProductDetails extends Component {
   constructor() {
@@ -43,6 +45,9 @@ class ProductDetails extends Component {
   render() {
     const { title, price, thumbnail, details, reviews } = this.state;
     const { match: { params: { id } } } = this.props;
+    // eslint-disable-next-line react/prop-types
+    const { addCart } = this.props;
+
     return (
       <div>
         <div className="flex">
@@ -56,8 +61,14 @@ class ProductDetails extends Component {
               key={ item.id }
               name={ item.name }
               valueName={ item.value_name }
-            />))}
+            />
+            ))}
           </div>
+          <AddToCartButton
+            title={ title }
+            addCart={ addCart }
+          />
+          <CartButton />
         </div>
         <ProductDetailsForm id={ id } getReviews={ this.getReviews } />
         <div />
