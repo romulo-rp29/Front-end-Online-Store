@@ -45,7 +45,6 @@ class ProductDetails extends Component {
   render() {
     const { title, price, thumbnail, details, reviews } = this.state;
     const { match: { params: { id } } } = this.props;
-    // eslint-disable-next-line react/prop-types
     const { addCart } = this.props;
 
     return (
@@ -89,6 +88,7 @@ ProductDetails.propTypes = {
       id: PropTypes.string,
     }),
   }).isRequired,
+  addCart: PropTypes.func.isRequired,
 };
 
 export default ProductDetails;
