@@ -3,8 +3,23 @@ import PropTypes from 'prop-types';
 import ItemCart from '../components/ItemCart';
 
 class Cart extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      totalPrice: 0,
+    };
+  }
+
+  handleTotalPrice = (price) => {
+    this.setState((prevState) => ({
+      totalPrice: prevState.totalPrice + price,
+    }));
+  }
+
   render() {
     const { cartItems } = this.props;
+    const { totalPrice } = this.state;
     return !cartItems.length ? (
       <h3 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h3>
     ) : (
@@ -14,8 +29,11 @@ class Cart extends Component {
             key={ index }
             productName={ item.title }
             productQuantity={ item.qtd }
+            productPrice={ item.price }
+            handleTotalPrice={ this.handleTotalPrice }
           />
         ))}
+        <span>{ `Total: R$${totalPrice}` }</span>
       </div>
     );
   }
@@ -25,6 +43,7 @@ Cart.propTypes = {
     PropTypes.shape({
       title: PropTypes.string,
       qtd: PropTypes.number,
+      price: PropTypes.number,
     }),
   ).isRequired,
 };
