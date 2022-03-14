@@ -11,12 +11,13 @@ class App extends Component {
     };
   }
 
-  addCart = (title, price) => {
+  addCart = (title, price, shipping) => {
     const { cartItems } = this.state;
     const item = {
       title,
       qtd: 1,
       price,
+      shipping,
     };
     if (cartItems === null) {
       return this.setState({ cartItems: [item] });
