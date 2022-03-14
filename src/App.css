@@ -19,3 +19,39 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.flex {
+  display: flex;
+}
+
+.product-detail {
+  background-color: red;
+  height: 400px;
+  overflow: scroll;
+  width: calc(45% - 30px);
+}
+
+.product {
+  margin-left: 15px;
+  width: 55%;
+}
+
+.stars {
+  display: inline-flex;
+  margin-left: 30px;
+  width: 100px;
+}
+
+.star {
+  border: 3px solid gainsboro;
+  height: 15px;
+  width: 15px;
+}
+
+.star__marked {
+  background-color: greenyellow;
+}
+
+.star__unmarked {
+  background-color: black;
+}
