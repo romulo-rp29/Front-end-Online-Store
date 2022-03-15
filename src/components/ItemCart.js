@@ -16,7 +16,8 @@ class ItemCart extends Component {
   }
 
   componentDidMount() {
-    const { productName, productQuantity, productPrice, handleTotalPrice, availableQuantity } = this.props;
+    const { productName, productQuantity,
+      productPrice, handleTotalPrice, availableQuantity } = this.props;
     this.setState({
       productName,
       productQuantity,
@@ -29,7 +30,7 @@ class ItemCart extends Component {
     });
   }
 
-  increaseQuantity = async () => {
+  increaseQuantity = () => {
     const { productPrice, availableQuantity, productQuantity } = this.state;
     const { handleTotalPrice } = this.props;
     if (productQuantity === availableQuantity) {
@@ -106,6 +107,7 @@ ItemCart.propTypes = {
   productQuantity: PropTypes.number.isRequired,
   productPrice: PropTypes.number.isRequired,
   handleTotalPrice: PropTypes.func.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
 };
 
 export default ItemCart;
