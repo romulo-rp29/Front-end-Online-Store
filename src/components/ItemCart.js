@@ -77,6 +77,7 @@ class ItemCart extends Component {
         <button
           type="button"
           onClick={ this.removeItem }
+          aria-hidden="true"
         >
           🗑️
         </button>

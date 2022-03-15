@@ -4,7 +4,7 @@ class FreeShipping extends Component {
   render() {
     return (
       <div>
-        <p data-testid="free-shipping">🚚 Frete Grátis</p>
+        <p data-testid="free-shipping" aria-hidden="true">🚚 Frete Grátis</p>
       </div>);
   }
 }
