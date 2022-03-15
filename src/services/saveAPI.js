@@ -34,3 +34,14 @@ export function loadReview(productId) {
   localStorage.reviews = JSON.stringify({});
   return [];
 }
+
+export function saveCartItems(cart) {
+  localStorage.cartItems = JSON.stringify(cart);
+}
+
+export function loadCartItem() {
+  if (localStorage.cartItems) {
+    return JSON.parse(localStorage.cartItems);
+  }
+  return [];
+}

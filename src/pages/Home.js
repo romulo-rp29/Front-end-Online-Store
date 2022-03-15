@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import CartButton from '../components/CartButton';
 import CategoryList from '../components/CategoryList';
 import Search from '../components/Search';
-import CartButton from '../components/CartButton';
 import { getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends Component {
@@ -31,7 +31,7 @@ class Home extends Component {
 
   render() {
     const { category, products, search } = this.state;
-    const { addCart } = this.props;
+    const { addCart, cartItems } = this.props;
     return (
       <div
         className="home"
@@ -45,13 +45,16 @@ class Home extends Component {
           searchItemCards={ this.searchItemCards }
           addCart={ addCart }
         />
-        <CartButton />
+        <CartButton cartItems={ cartItems } />
       </div>
     );
   }
 }
 Home.propTypes = {
   addCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
 };
 
 export default Home;

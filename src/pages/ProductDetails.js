@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import AddToCartButton from '../components/AddToCartButton';
+import CartButton from '../components/CartButton';
 import ProductAttributes from '../components/ProductAttributes';
 import ProductDetailsForm from '../components/ProductDetailsForm';
 import ProductReview from '../components/ProductReview';
 import { getProductDetails } from '../services/api';
 import { loadReview } from '../services/saveAPI';
-import CartButton from '../components/CartButton';
 import FreeShipping from '../components/FreeShipping';
+
 
 class ProductDetails extends Component {
   constructor() {
@@ -48,7 +49,8 @@ class ProductDetails extends Component {
   render() {
     const { title, price, thumbnail, details, reviews, freeShipping } = this.state;
     const { match: { params: { id } } } = this.props;
-    const { addCart } = this.props;
+    const { addCart, cartItems } = this.props;
+
     return (
       <div>
         <div className="flex">
@@ -68,9 +70,10 @@ class ProductDetails extends Component {
           </div>
           <AddToCartButton
             title={ title }
+            price={ price }
             addCart={ addCart }
           />
-          <CartButton />
+          <CartButton cartItems={ cartItems } />
         </div>
         <ProductDetailsForm id={ id } getReviews={ this.getReviews } />
         <div />
@@ -92,6 +95,9 @@ ProductDetails.propTypes = {
     }),
   }).isRequired,
   addCart: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
 };
 
 export default ProductDetails;

@@ -5,8 +5,10 @@ import FreeShipping from './FreeShipping';
 
 class CardProducts extends Component {
   render() {
-    const { dataProduct: { title, thumbnail, price, id, shipping } } = this.props;
     const freeShipping = Object.values(shipping)[0];
+    const { dataProduct:
+      { title, thumbnail, price,
+        id, shipping, available_quantity: availableQuantity } } = this.props;
     const { addCart } = this.props;
     return (
       <div
@@ -28,7 +30,7 @@ class CardProducts extends Component {
         <button
           type="button"
           data-testid="product-add-to-cart"
-          onClick={ () => addCart(title, price) }
+          onClick={ () => addCart(title, price, availableQuantity) }
         >
           Adicionar ao carrrinho
         </button>
@@ -45,6 +47,7 @@ CardProducts.propTypes = {
     shipping: PropTypes.shape({
       free_shipping: PropTypes.bool.isRequired,
     }),
+    available_quantity: PropTypes.number,
   }).isRequired,
   addCart: PropTypes.func.isRequired,
 };
