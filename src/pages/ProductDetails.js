@@ -65,6 +65,7 @@ class ProductDetails extends Component {
           </div>
           <AddToCartButton
             title={ title }
+            price={ price }
             addCart={ addCart }
           />
           <CartButton />
