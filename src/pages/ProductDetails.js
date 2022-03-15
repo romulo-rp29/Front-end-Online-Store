@@ -9,7 +9,6 @@ import { getProductDetails } from '../services/api';
 import { loadReview } from '../services/saveAPI';
 import FreeShipping from '../components/FreeShipping';
 
-
 class ProductDetails extends Component {
   constructor() {
     super();
