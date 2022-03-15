@@ -18,7 +18,6 @@ class App extends Component {
   }
 
   addCart = (title, price, availableQuantity, shipping) => {
-
     const { cartItems } = this.state;
     const item = {
       title,
