@@ -10,15 +10,18 @@ class ItemCart extends Component {
       productQuantity: 0,
       productPrice: 0,
       productTotalPrice: 0,
+      availableQuantity: 0,
+      btnDisabled: false,
     };
   }
 
   componentDidMount() {
-    const { productName, productQuantity, productPrice, handleTotalPrice } = this.props;
+    const { productName, productQuantity, productPrice, handleTotalPrice, availableQuantity } = this.props;
     this.setState({
       productName,
       productQuantity,
       productPrice,
+      availableQuantity,
     });
     handleTotalPrice(productPrice);
     this.setState({
@@ -27,8 +30,11 @@ class ItemCart extends Component {
   }
 
   increaseQuantity = async () => {
-    const { productPrice } = this.state;
+    const { productPrice, availableQuantity, productQuantity } = this.state;
     const { handleTotalPrice } = this.props;
+    if (productQuantity === availableQuantity) {
+      return this.setState({ btnDisabled: true });
+    }
     this.setState((prevState) => ({
       productQuantity: prevState.productQuantity + 1,
     }));
@@ -39,8 +45,11 @@ class ItemCart extends Component {
   }
 
   decreaseQuantity = () => {
-    const { productQuantity, productPrice } = this.state;
+    const { productQuantity, productPrice, availableQuantity } = this.state;
     const { handleTotalPrice } = this.props;
+    if (productQuantity < availableQuantity) {
+      this.setState({ btnDisabled: false });
+    }
     if (productQuantity > 1) {
       this.setState((prevState) => ({
         productQuantity: prevState.productQuantity - 1,
@@ -61,7 +70,7 @@ class ItemCart extends Component {
   }
 
   render() {
-    const { productName, productQuantity, productTotalPrice } = this.state;
+    const { productName, productQuantity, productTotalPrice, btnDisabled } = this.state;
     return (
       <div>
         <button
@@ -84,6 +93,7 @@ class ItemCart extends Component {
           type="button"
           data-testid="product-increase-quantity"
           onClick={ this.increaseQuantity }
+          disabled={ btnDisabled }
         >
           +
         </button>

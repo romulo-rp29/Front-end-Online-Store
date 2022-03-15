@@ -31,6 +31,7 @@ class Cart extends Component {
             productQuantity={ item.qtd }
             productPrice={ item.price }
             handleTotalPrice={ this.handleTotalPrice }
+            availableQuantity={ item.availableQuantity }
           />
         ))}
         <span>{ `Total: R$${(totalPrice.toFixed(2))}` }</span>
