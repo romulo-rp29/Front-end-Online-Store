@@ -17,6 +17,7 @@ class CartButton extends Component {
           <button
             data-testid="shopping-cart-size"
             type="button"
+            aria-hidden="true"
           >
             🛒
             <span>{this.cartSize()}</span>

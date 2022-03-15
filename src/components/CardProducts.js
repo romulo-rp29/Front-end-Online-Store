@@ -5,10 +5,10 @@ import FreeShipping from './FreeShipping';
 
 class CardProducts extends Component {
   render() {
-    const freeShipping = Object.values(shipping)[0];
     const { dataProduct:
       { title, thumbnail, price,
         id, shipping, available_quantity: availableQuantity } } = this.props;
+    const freeShipping = Object.values(shipping)[0];
     const { addCart } = this.props;
     return (
       <div
