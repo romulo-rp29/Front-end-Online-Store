@@ -7,6 +7,8 @@ import ProductDetailsForm from '../components/ProductDetailsForm';
 import ProductReview from '../components/ProductReview';
 import { getProductDetails } from '../services/api';
 import { loadReview } from '../services/saveAPI';
+import FreeShipping from '../components/FreeShipping';
+
 
 class ProductDetails extends Component {
   constructor() {
@@ -15,6 +17,7 @@ class ProductDetails extends Component {
       title: '',
       price: '',
       thumbnail: '',
+      freeShipping: '',
       details: [],
       reviews: [],
     };
@@ -32,6 +35,7 @@ class ProductDetails extends Component {
       title: result.title,
       price: result.price,
       thumbnail: result.thumbnail,
+      freeShipping: result.shipping.free_shipping,
       details: result.attributes,
     });
   }
@@ -43,7 +47,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { title, price, thumbnail, details, reviews } = this.state;
+    const { title, price, thumbnail, details, reviews, freeShipping } = this.state;
     const { match: { params: { id } } } = this.props;
     const { addCart, cartItems } = this.props;
 
@@ -52,6 +56,7 @@ class ProductDetails extends Component {
         <div className="flex">
           <div className="product">
             <h1 data-testid="product-detail-name">{title}</h1>
+            {freeShipping ? (<FreeShipping />) : null}
             <img src={ thumbnail } alt="" />
             <p>{`R$${price}`}</p>
           </div>

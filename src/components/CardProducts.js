@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import FreeShipping from './FreeShipping';
 
 class CardProducts extends Component {
   render() {
+    const freeShipping = Object.values(shipping)[0];
     const { dataProduct:
       { title, thumbnail, price,
-        id, available_quantity: availableQuantity } } = this.props;
+        id, shipping, available_quantity: availableQuantity } } = this.props;
     const { addCart } = this.props;
     return (
       <div
@@ -14,6 +16,7 @@ class CardProducts extends Component {
         className="card-products"
       >
         <p>{ title }</p>
+        {freeShipping ? (<FreeShipping />) : null}
         <img src={ thumbnail } alt={ title } className="card-products__image" />
         <span>{ `R$${price}` }</span>
         <Link
@@ -41,6 +44,9 @@ CardProducts.propTypes = {
     thumbnail: PropTypes.string,
     price: PropTypes.number,
     id: PropTypes.string,
+    shipping: PropTypes.shape({
+      free_shipping: PropTypes.bool.isRequired,
+    }),
     available_quantity: PropTypes.number,
   }).isRequired,
   addCart: PropTypes.func.isRequired,
