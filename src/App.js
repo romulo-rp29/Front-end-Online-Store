@@ -17,12 +17,14 @@ class App extends Component {
     this.setState({ cartItems });
   }
 
-  addCart = (title, price) => {
+  addCart = (title, price, availableQuantity) => {
+
     const { cartItems } = this.state;
     const item = {
       title,
       qtd: 1,
       price,
+      availableQuantity,
     };
     if (cartItems === null) {
       return this.setState({ cartItems: [item] }, this.saveCart);
