@@ -12,7 +12,6 @@ Nesse projeto, fomos capazes de:
 
 * Trabalhar em equipes utilizando Kanban ou Scrum de maneira eficaz
 * Praticar todas as habilidades desenvolvidas até o momento no módulo de Front-End
-* Foi utilizado a API do Mercado Livre
 
 ---
 
